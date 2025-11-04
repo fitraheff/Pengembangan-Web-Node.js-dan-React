@@ -33,9 +33,9 @@ const getCategoryById = async (req, res) => {
 //CREATE
 const createCategory = async (req, res) => {
     try {
-        const { name, description } = req.body;
+        const { name, desc } = req.body;
         const category = await prisma.category.create({
-            data: { name, description }
+            data: { name, desc }
         });
         return res.status(201).json(category);
     } catch (error) {
@@ -48,11 +48,11 @@ const createCategory = async (req, res) => {
 const updateCategory = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const { name, description } = req.body;
+        const { name, desc } = req.body;
 
         const category = await prisma.category.update({
             where: { id },
-            data: { name, description }
+            data: { name, desc }
         });
         return res.json(category);
     } catch (error) {
